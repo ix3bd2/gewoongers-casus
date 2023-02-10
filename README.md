@@ -270,7 +270,7 @@ situatie en de gewenste situatie:
 ```
 
 ### Verdere informatie
-- Als je een vraag kan stellen kan je naar ons 
+- Als je een vraag wil stellen kan je naar ons 
 [Q&A bord](https://github.com/gewoongers/zaaglijst-casus/discussions/categories/q-a).
 - Als je leuke ideetjes hebt voor deze casus kan je idee posten op ons 
 [ideeën bord](https://github.com/gewoongers/zaaglijst-casus/discussions/categories/ideas)
