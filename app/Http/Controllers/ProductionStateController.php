@@ -29,11 +29,19 @@ class ProductionStateController extends Controller
                         foreach ($matches as $number) {
                             // Loop through each match
                             foreach ($number as $Gnumber) {
-                                // Add the extracted information to the new JSON array
-                                $newJSON[$profilekleur][] = array('G' . $Gnumber => array(
+                                $Gnumber = 'G' . $Gnumber;
+                                $info = array(
                                     'length' => $sawEntry['value'],
                                     'count' => $sawEntry['amount'],
-                                ));
+                                );
+                                // Check if the G number already exists in the new JSON array
+                                if (isset($newJSON[$profilekleur][$Gnumber])) {
+                                    // If it does, add the extracted information to the existing array
+                                    $newJSON[$profilekleur][$Gnumber][] = $info;
+                                } else {
+                                    // If it doesn't, create a new array with the extracted information
+                                    $newJSON[$profilekleur][$Gnumber] = array($info);
+                                }
                             }
                         }
                     }
