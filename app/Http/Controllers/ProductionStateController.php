@@ -53,7 +53,7 @@ class ProductionStateController extends Controller
         $data = json_decode($json, true);
         $newJSON = [];
 
-        foreach ($data as $entry) { //foreach element in $arr
+        foreach ($data as $entry) { 
             if (isset($entry['saw']['profielkleur'])) {
                 $profilekleur = $entry['saw']['profielkleur']['title'];
                 foreach ($entry['saw'] as $key => $sawEntry) {
