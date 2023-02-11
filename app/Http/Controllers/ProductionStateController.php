@@ -26,24 +26,6 @@ class ProductionStateController extends Controller
                 }
             },
             {
-                "id": 456,
-                "saw": {
-                    "staandersg70verstekdeur": {
-                        "title": "Staanders G70 verstek deur",
-                        "amount": 2,
-                        "value": 2400
-                    },
-                    "staanderg62g69deur": {
-                        "title": "Staander G69 deur",
-                        "amount": 1,
-                        "value": 2400
-                    },
-                    "profielkleur": {
-                        "title": "PROFIELKLEUR: Leem"
-                    }
-                }
-            },
-            {
                 "id": 789,
                 "saw": {
                     "staandersg70verstekdeur": {
@@ -70,13 +52,20 @@ class ProductionStateController extends Controller
 
         $data = json_decode($json, true);
         $newJSON = [];
+
         foreach ($data as $entry) { //foreach element in $arr
             if (isset($entry['saw']['profielkleur'])) {
-                $newJSON[] = array($entry['saw']['profielkleur']['title']);
-
-
-                /*  foreach ($entry['saw'] as $sawEntry) {
-                }  */
+                $profilekleur = $entry['saw']['profielkleur']['title'];
+                foreach ($entry['saw'] as $key => $sawEntry) {
+                    if (isset($sawEntry['amount'])) {
+                        preg_match_all('~[0-9]+~', $key, $matches);
+                        foreach ($matches as $number) {
+                            foreach ($number as $Gnumber) {
+                                $newJSON[$profilekleur][] = array('G' . $Gnumber);
+                            }
+                        }
+                    }
+                }
             }
         }
         return $newJSON;
