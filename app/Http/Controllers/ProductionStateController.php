@@ -61,7 +61,9 @@ class ProductionStateController extends Controller
                         preg_match_all('~[0-9]+~', $key, $matches);
                         foreach ($matches as $number) {
                             foreach ($number as $Gnumber) {
-                                $newJSON[$profilekleur][] = array('G' . $Gnumber);
+                                $newJSON[$profilekleur][] = array('G' . $Gnumber => array('length'=> $sawEntry['value'],
+                                'count'=> $sawEntry['amount'],
+                            ));
                             }
                         }
                     }
